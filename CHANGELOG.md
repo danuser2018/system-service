@@ -19,7 +19,7 @@ Los cambios se agrupan en las siguientes categorías:
 
 ---
 
-## [Sin publicar]
+## [1.0.0] - 2026-06-14
 
 ### Añadido
 
@@ -27,11 +27,17 @@ Los cambios se agrupan en las siguientes categorías:
   convenciones de commits, guía de Pull Requests y buenas prácticas para
   desarrollo asistido con IA.
 - Fichero `CHANGELOG.md` con el formato Keep a Changelog v1.1.0 en castellano.
-- Fichero `README.md` con las características del servicio
-
-## [Sin publicar]
+- Fichero `README.md` con las características del servicio.
+- Implementación completa del servicio en Python usando FastAPI.
+- Configuración para cargar variables de entorno `NOVA_NAME`, `NOVA_AUTHOR`, `NOVA_VERSION` (por defecto `2.0.0`) y `NOVA_DESCRIPTION`.
+- Endpoints expuestos: `GET /system/info` y `GET /health`.
+- Dockerización con `Dockerfile` y `docker-compose.yml`.
+- Pruebas unitarias e integradas con `pytest` y `FastAPI TestClient`.
+- Workflow de GitHub Actions (`test.yml`) para ejecutar pruebas automatizadas en cada PR.
 
 ---
+
+## Sin publicar
 
 <!-- Plantilla para nuevas versiones:
 
