@@ -21,7 +21,12 @@ Los cambios se agrupan en las siguientes categorías:
 
 ## Sin publicar
 
-- Documentación para el registro de capacidades del sistema
+### [1.1.0] - 2026-06-27
+
+- Endpoint `POST /system/capabilities` para almacenar la lista de capacidades en memoria (reemplazo completo e idempotente).
+- Endpoint `GET /system/capabilities` para recuperar la lista de capacidades registradas.
+- Manejador global de excepciones en FastAPI para errores de validación de peticiones (`RequestValidationError`) para que retornen HTTP 400 Bad Request en lugar de HTTP 422.
+- Documentación y modelo en `README.md` del nuevo contrato de capacidades del sistema.
 
 ## [1.0.0] - 2026-06-14
 

@@ -1,16 +1,15 @@
-# system-service (Nova) — Fase 1
+# system-service (Nova)
 
 ## 📌 Visión general
 
-`system-service` es un microservicio del ecosistema Nova encargado de exponer **información básica de identidad del sistema**.
+`system-service` es un microservicio del ecosistema Nova encargado de exponer **información básica de identidad del sistema** y actuar como el **registro central de capacidades del sistema**.
 
-En esta primera fase (MVP), su única responsabilidad es servir información estática sobre Nova a través de una API REST.
+Los endpoints funcionales son:
 
-El único endpoint funcional en esta fase es:
+* `GET /system/info`: Devuelve información estática de identidad sobre Nova.
+* `POST /system/capabilities`: Permite al Orchestrator registrar las capacidades disponibles en el sistema.
+* `GET /system/capabilities`: Permite consultar la lista de capacidades registradas.
 
-> `GET /system/info`
-
-Este servicio será consumido exclusivamente por el Orchestrator a través del **Identity Plugin**.
 
 ---
 
@@ -204,6 +203,99 @@ NOVA_DESCRIPTION=Asistente personal de voz y automatización
 ```
 
 Si no están definidas, se usan valores por defecto hardcoded.
+
+---
+
+## 🔹 System Capabilities
+
+### Endpoint (Registrar capacidades)
+
+```http id="endpoint-post-capabilities"
+POST /system/capabilities
+```
+
+---
+
+### Descripción
+
+Sustituye completamente la lista de capacidades en memoria. Operación idempotente.
+
+---
+
+### Request
+
+```json id="request-post-capabilities"
+{
+  "capabilities": [
+    {
+      "id": "identity",
+      "description": "Información sobre Nova"
+    },
+    {
+      "id": "weather",
+      "description": "Consultar el tiempo"
+    }
+  ]
+}
+```
+
+---
+
+### Response
+
+```json id="response-post-capabilities"
+{
+  "success": true
+}
+```
+
+---
+
+### Endpoint (Obtener capacidades)
+
+```http id="endpoint-get-capabilities"
+GET /system/capabilities
+```
+
+---
+
+### Descripción
+
+Devuelve la lista actual de capacidades registradas. Si no hay ninguna, devuelve una lista vacía.
+
+---
+
+### Response
+
+```json id="response-get-capabilities"
+{
+  "capabilities": [
+    {
+      "id": "identity",
+      "description": "Información sobre Nova"
+    },
+    {
+      "id": "weather",
+      "description": "Consultar el tiempo"
+    }
+  ]
+}
+```
+
+---
+
+### Modelo de datos
+
+```ts id="model-capabilities"
+interface Capability {
+  id: string;
+  description: string;
+}
+
+interface CapabilityList {
+  capabilities: Capability[];
+}
+```
 
 ---
 
