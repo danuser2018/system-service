@@ -19,6 +19,10 @@ Los cambios se agrupan en las siguientes categorías:
 
 ---
 
+## Sin publicar
+
+- Documentación para el registro de capacidades del sistema
+
 ## [1.0.0] - 2026-06-14
 
 ### Añadido
