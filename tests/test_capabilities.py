@@ -74,7 +74,7 @@ def test_api_capabilities_flow():
     client = TestClient(app)
     
     # 1. GET initially empty
-    response = client.get("/system/capabilities")
+    response = client.get("/v1/system/capabilities")
     assert response.status_code == 200
     assert response.json() == {"capabilities": []}
     
@@ -85,12 +85,12 @@ def test_api_capabilities_flow():
             {"id": "weather", "description": "Consultar el tiempo"}
         ]
     }
-    response = client.post("/system/capabilities", json=payload)
+    response = client.post("/v1/system/capabilities", json=payload)
     assert response.status_code == 200
     assert response.json() == {"success": True}
     
     # 3. GET check capabilities are registered
-    response = client.get("/system/capabilities")
+    response = client.get("/v1/system/capabilities")
     assert response.status_code == 200
     data = response.json()
     assert len(data["capabilities"]) == 2
@@ -105,7 +105,7 @@ def test_api_capabilities_flow():
             {"name": "identity"}
         ]
     }
-    response = client.post("/system/capabilities", json=invalid_payload)
+    response = client.post("/v1/system/capabilities", json=invalid_payload)
     assert response.status_code == 400
     
     # 5. POST with invalid types should return 400
@@ -114,5 +114,5 @@ def test_api_capabilities_flow():
             {"id": 123, "description": "Needs to be string"}
         ]
     }
-    response = client.post("/system/capabilities", json=invalid_payload2)
+    response = client.post("/v1/system/capabilities", json=invalid_payload2)
     assert response.status_code == 400

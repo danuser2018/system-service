@@ -39,7 +39,7 @@ def test_api_endpoints():
     assert response.json() == {"status": "ok"}
     
     # Test GET /system/info
-    response = client.get("/system/info")
+    response = client.get("/v1/system/info")
     assert response.status_code == 200
     data = response.json()
     assert data["name"] == "Nova"
