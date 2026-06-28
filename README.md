@@ -180,13 +180,12 @@ Devuelve la información de identidad del sistema Nova.
 
 ### Modelo de datos
 
-```ts id="model-system-info"
-interface SystemInfo {
-  name: string;
-  author: string;
-  version: string;
-  description: string;
-}
+```python id="model-system-info"
+class SystemInfo(BaseModel):
+    name: str
+    author: str
+    version: str
+    description: str
 ```
 
 ---
@@ -286,15 +285,13 @@ Devuelve la lista actual de capacidades registradas. Si no hay ninguna, devuelve
 
 ### Modelo de datos
 
-```ts id="model-capabilities"
-interface Capability {
-  id: string;
-  description: string;
-}
+```python id="model-capabilities"
+class Capability(BaseModel):
+    id: str
+    description: str
 
-interface CapabilityList {
-  capabilities: Capability[];
-}
+class CapabilityList(BaseModel):
+    capabilities: list[Capability]
 ```
 
 ---
@@ -355,18 +352,19 @@ healthcheck:
 ### 📦 Dockerfile
 
 ```dockerfile id="dockerfile"
-FROM node:20-alpine
+FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm install
+COPY requirements.txt .
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
 EXPOSE 8000
 
-CMD ["npm", "start"]
+CMD ["python", "-m", "src.main"]
 ```
 
 ---
@@ -400,13 +398,14 @@ docker run -d \
 system-service/
 ├── src/
 │   ├── api/
-│   ├── routes/
+│   ├── config/
 │   ├── controllers/
+│   ├── routes/
 │   ├── services/
-│   └── config/
+│   └── main.py
 ├── Dockerfile
 ├── docker-compose.yml
-├── package.json
+├── requirements.txt
 └── README.md
 ```
 

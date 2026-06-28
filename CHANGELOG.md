@@ -21,7 +21,12 @@ Los cambios se agrupan en las siguientes categorías:
 
 ## Sin publicar
 
+### Cambiado
+
+- Corregido el documento README.md para reflejar que la tecnología del microservicio es Python y FastAPI en lugar de Node.js.
+
 ### Añadido
+
 
 - Nueva carpeta `.agent/skills` con información relevante para la IA.
 
