@@ -21,7 +21,11 @@ Los cambios se agrupan en las siguientes categorías:
 
 ## Sin publicar
 
-### [1.1.0] - 2026-06-27
+### Añadido
+
+- Nueva carpeta `.agent/skills` con información relevante para la IA.
+
+## [1.1.0] - 2026-06-27
 
 - Endpoint `POST /system/capabilities` para almacenar la lista de capacidades en memoria (reemplazo completo e idempotente).
 - Endpoint `GET /system/capabilities` para recuperar la lista de capacidades registradas.
