@@ -6,9 +6,9 @@
 
 Los endpoints funcionales son:
 
-* `GET /system/info`: Devuelve información estática de identidad sobre Nova.
-* `POST /system/capabilities`: Permite al Orchestrator registrar las capacidades disponibles en el sistema.
-* `GET /system/capabilities`: Permite consultar la lista de capacidades registradas.
+* `GET /v1/system/info`: Devuelve información estática de identidad sobre Nova.
+* `POST /v1/system/capabilities`: Permite al Orchestrator registrar las capacidades disponibles en el sistema.
+* `GET /v1/system/capabilities`: Permite consultar la lista de capacidades registradas.
 
 
 ---
@@ -71,7 +71,7 @@ Identity Plugin
   ↓
 system-service
   ↓
-GET /system/info
+GET /v1/system/info
   ↓
 Respuesta JSON
 ```
@@ -154,7 +154,7 @@ Responsabilidades:
 ### Endpoint
 
 ```http id="endpoint-system-info"
-GET /system/info
+GET /v1/system/info
 ```
 
 ---
@@ -170,8 +170,8 @@ Devuelve la información de identidad del sistema Nova.
 ```json id="response-system-info"
 {
   "name": "Nova",
-  "author": "David",
-  "version": "0.1.0",
+  "author": "Xeretre studios",
+  "version": "2.0.0",
   "description": "Asistente personal de voz y automatización"
 }
 ```
@@ -196,8 +196,8 @@ Los valores provienen de variables de entorno:
 
 ```bash id="env-vars"
 NOVA_NAME=Nova
-NOVA_AUTHOR=David
-NOVA_VERSION=0.1.0
+NOVA_AUTHOR=Xeretre studios
+NOVA_VERSION=2.0.0
 NOVA_DESCRIPTION=Asistente personal de voz y automatización
 ```
 
@@ -210,7 +210,7 @@ Si no están definidas, se usan valores por defecto hardcoded.
 ### Endpoint (Registrar capacidades)
 
 ```http id="endpoint-post-capabilities"
-POST /system/capabilities
+POST /v1/system/capabilities
 ```
 
 ---
@@ -253,7 +253,7 @@ Sustituye completamente la lista de capacidades en memoria. Operación idempoten
 ### Endpoint (Obtener capacidades)
 
 ```http id="endpoint-get-capabilities"
-GET /system/capabilities
+GET /v1/system/capabilities
 ```
 
 ---
@@ -372,7 +372,7 @@ CMD ["python", "-m", "src.main"]
 ### 🚀 Build de imagen
 
 ```bash id="docker-build"
-docker build -t nova/system-service:1.0 .
+docker build -t danuser2018/system-service:latest .
 ```
 
 ---
@@ -384,10 +384,10 @@ docker run -d \
   --name system-service \
   -p 8000:8000 \
   -e NOVA_NAME=Nova \
-  -e NOVA_AUTHOR=David \
-  -e NOVA_VERSION=0.1.0 \
+  -e NOVA_AUTHOR="Xeretre studios" \
+  -e NOVA_VERSION=2.0.0 \
   -e NOVA_DESCRIPTION="Asistente personal de voz y automatización" \
-  nova/system-service:1.0
+  danuser2018/system-service:latest
 ```
 
 ---
@@ -424,7 +424,7 @@ Orchestrator
   ↓
 Identity Plugin
   ↓
-HTTP GET /system/info
+HTTP GET /v1/system/info
   ↓
 Respuesta JSON
   ↓
@@ -437,7 +437,7 @@ Respuesta en lenguaje natural
 
 El Identity Plugin debe:
 
-* llamar a `/system/info`
+* llamar a `/v1/system/info`
 * transformar JSON en respuesta natural
 * responder preguntas como:
 
@@ -451,7 +451,7 @@ El Identity Plugin debe:
 
 ### 1. No añadir endpoints adicionales
 
-Solo `/system/info` y `/health`.
+Solo `/v1/system/info` y `/health`.
 
 ---
 

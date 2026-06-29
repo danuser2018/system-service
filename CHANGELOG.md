@@ -19,6 +19,15 @@ Los cambios se agrupan en las siguientes categorías:
 
 ---
 
+## [1.3.0] - 2026-06-30
+
+### Corregido
+
+- Corregidas las discrepancias de documentación de los endpoints añadiendo el prefijo `/v1` en `README.md` y `registro_capacidades_sistema.md`.
+- Cambiado el autor por defecto (`NOVA_AUTHOR`) de `"David"` a `"Xeretre studios"` en código, composición de Docker, README y pruebas.
+- Actualizada la versión documentada en `README.md` a `"2.0.0"` para alinearse con la configuración predeterminada.
+- Corregida la referencia de la imagen de Docker en `README.md` para utilizar `danuser2018/system-service:latest`.
+
 ## [1.2.0] - 2026-06-28
 
 ### Cambiado

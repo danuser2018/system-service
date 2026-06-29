@@ -8,7 +8,7 @@ services:
       - "8000:8000"
     environment:
       - NOVA_NAME=Nova
-      - NOVA_AUTHOR=David
+      - NOVA_AUTHOR=Xeretre studios
       - NOVA_VERSION=2.0.0
       - NOVA_DESCRIPTION=Asistente personal de voz y automatización
     healthcheck:
