@@ -10,7 +10,7 @@ def test_config_defaults():
     # Test that settings can be instantiated with default values
     settings = Settings()
     assert settings.NOVA_NAME == "Nova"
-    assert settings.NOVA_AUTHOR == "David"
+    assert settings.NOVA_AUTHOR == "Xeretre studios"
     assert settings.NOVA_VERSION == "2.0.0"
     assert settings.NOVA_DESCRIPTION == "Asistente personal de voz y automatización"
 
@@ -18,7 +18,7 @@ def test_system_info_service():
     service = SystemInfoService()
     info = service.get_system_info()
     assert info.name == "Nova"
-    assert info.author == "David"
+    assert info.author == "Xeretre studios"
     assert info.version == "2.0.0"
     assert info.description == "Asistente personal de voz y automatización"
 
@@ -43,6 +43,6 @@ def test_api_endpoints():
     assert response.status_code == 200
     data = response.json()
     assert data["name"] == "Nova"
-    assert data["author"] == "David"
+    assert data["author"] == "Xeretre studios"
     assert data["version"] == "2.0.0"
     assert data["description"] == "Asistente personal de voz y automatización"

@@ -68,7 +68,7 @@ Si el servicio se reinicia, el Orchestrator volverá a publicarla durante su pro
         Descubre plugins
                   |
                   |
-POST /system/capabilities
+POST /v1/system/capabilities
                   |
                   v
           +----------------+
@@ -82,7 +82,7 @@ POST /system/capabilities
 
 Cualquier servicio
 
-GET /system/capabilities
+GET /v1/system/capabilities
 
                   |
                   v
@@ -103,7 +103,7 @@ GET /system/capabilities
 ### Endpoint
 
 ```http
-POST /system/capabilities
+POST /v1/system/capabilities
 ```
 
 ### Request
@@ -149,7 +149,7 @@ POST /system/capabilities
 ### Endpoint
 
 ```http
-GET /system/capabilities
+GET /v1/system/capabilities
 ```
 
 ### Response
@@ -223,9 +223,9 @@ No contiene ninguna lógica adicional.
 Añadir un nuevo controlador encargado de:
 
 ```
-POST /system/capabilities
+POST /v1/system/capabilities
 
-GET /system/capabilities
+GET /v1/system/capabilities
 ```
 
 El controlador delegará toda la lógica en `CapabilityService`.
@@ -249,7 +249,7 @@ Construir lista de capacidades
 
 ↓
 
-POST /system/capabilities
+POST /v1/system/capabilities
 
 ↓
 
